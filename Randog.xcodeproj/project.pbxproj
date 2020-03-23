@@ -14,6 +14,8 @@
 		7C84EA1E24266027005B23E8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C84EA1C24266027005B23E8 /* LaunchScreen.storyboard */; };
 		7C84EA2924266027005B23E8 /* RandogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C84EA2824266027005B23E8 /* RandogTests.swift */; };
 		7C84EA3424266027005B23E8 /* RandogUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C84EA3324266027005B23E8 /* RandogUITests.swift */; };
+		7C84EA4524267081005B23E8 /* DogAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C84EA4424267081005B23E8 /* DogAPI.swift */; };
+		7C84EA4724271465005B23E8 /* DogImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C84EA4624271465005B23E8 /* DogImage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +49,8 @@
 		7C84EA2F24266027005B23E8 /* RandogUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RandogUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C84EA3324266027005B23E8 /* RandogUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandogUITests.swift; sourceTree = "<group>"; };
 		7C84EA3524266027005B23E8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7C84EA4424267081005B23E8 /* DogAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogAPI.swift; sourceTree = "<group>"; };
+		7C84EA4624271465005B23E8 /* DogImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogImage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,11 +101,9 @@
 		7C84EA1224266023005B23E8 /* Randog */ = {
 			isa = PBXGroup;
 			children = (
-				7C84EA1324266023005B23E8 /* AppDelegate.swift */,
-				7C84EA1524266023005B23E8 /* ViewController.swift */,
-				7C84EA1724266023005B23E8 /* Main.storyboard */,
-				7C84EA1A24266027005B23E8 /* Assets.xcassets */,
-				7C84EA1C24266027005B23E8 /* LaunchScreen.storyboard */,
+				7C84EA432426704E005B23E8 /* Model */,
+				7C84EA4224266061005B23E8 /* Controller */,
+				7C84EA4124266055005B23E8 /* View */,
 				7C84EA1F24266027005B23E8 /* Info.plist */,
 			);
 			path = Randog;
@@ -123,6 +125,34 @@
 				7C84EA3524266027005B23E8 /* Info.plist */,
 			);
 			path = RandogUITests;
+			sourceTree = "<group>";
+		};
+		7C84EA4124266055005B23E8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7C84EA1724266023005B23E8 /* Main.storyboard */,
+				7C84EA1A24266027005B23E8 /* Assets.xcassets */,
+				7C84EA1C24266027005B23E8 /* LaunchScreen.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		7C84EA4224266061005B23E8 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				7C84EA1324266023005B23E8 /* AppDelegate.swift */,
+				7C84EA1524266023005B23E8 /* ViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		7C84EA432426704E005B23E8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7C84EA4424267081005B23E8 /* DogAPI.swift */,
+				7C84EA4624271465005B23E8 /* DogImage.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,6 +288,8 @@
 			files = (
 				7C84EA1624266023005B23E8 /* ViewController.swift in Sources */,
 				7C84EA1424266023005B23E8 /* AppDelegate.swift in Sources */,
+				7C84EA4724271465005B23E8 /* DogImage.swift in Sources */,
+				7C84EA4524267081005B23E8 /* DogAPI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
