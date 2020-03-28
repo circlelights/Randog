@@ -11,15 +11,33 @@ import UIKit
 
 class DogAPI {
     enum Endpoint: String {
-        case randomImageFromAllDogsCollection = "https://dog.ceo/api/breeds/image/random"
+        typealias RawValue = String
         
+        case randomImageFromAllDogsCollection
+        case randomImageForBreed(String)
+        case listAllBreads
+
         var url:URL {
-            return URL(string: self.rawValue)!
+            return URL(string: self.stringValue)!
             }
+        
+        var stringValue: String {
+            switch self {
+            case .randomImageFromAllDogsCollection:
+                return "https://dog.ceo/api/breeds/image/random"
+            case .randomImageForBreed(let breed):
+                return "https://dog.ceo/api/breed/\(breed)/images/random"
+            case .listAllBreads:
+                return "https://dog.ceo/api/breeds/list/all"
+            default:
+                <#code#>
+            }
+        }
         
     }
     
     class func requestImageFile(url: URL, completionHandler: @escaping (UIImage?, Error?) -> Void){
+        let randomImageEndpoint = DogAPI.Endpoint.randomImageForBreed(breed)
         let task = URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
             guard let data = data else {
                 completionHandler(nil, error)
@@ -32,7 +50,23 @@ class DogAPI {
         task.resume()
     }
     
-    class func requestRandomImage(completionHandler: @escaping (DogImage?, Error?) -> Void) {
+    class func requestBreedsList(completionHandler: @escaping ([String], Error?) -> Void) {
+        let task = URLSession.shared.dataTask(with: Endpoint.listAllBreads.url) { (data, response, error) in
+            guard let data = data else {
+                completionHandler([], error)
+                return
+            }
+            let decoder = JSONDecoder()
+            let breedsResponse = try! decoder.decode(BreedsListResponse.self, from: data)
+            let breeds = breedsResponse.message.keys.map({$0})
+            completionHandler(breeds, nil)
+        }
+        task.resume()
+}
+    
+    
+    
+    class func requestRandomImage(breed: String, completionHandler: @escaping (DogImage?, Error?) -> Void) {
         let randomImageEndpoint = DogAPI.Endpoint.randomImageFromAllDogsCollection.url
         let task = URLSession.shared.dataTask(with: randomImageEndpoint) { (data, response, error) in
             guard let data = data else {
